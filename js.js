@@ -1,9 +1,9 @@
 var topics = ["dog", "cat", "rabbit", "hamster", "skunk", "goldfish", "bird", "ferret", "turtle"];
 
-
+// renderButtons();
 function renderButtons() {
 
-    $("#gifs-appear-here").empty();
+    $("#animal-buttons").empty();
 
 
     for (var i = 0; i < topics.length; i++) {
@@ -13,12 +13,14 @@ function renderButtons() {
 		a.attr("data-animal", topics[i]);
 		a.text(topics[i]);
 		$("#animal-buttons").append(a);
-        console.log(a);
+        //console.log(a);
 
      }
+   }
 
-    $("button").on("click" , function(){
+    $(".animals").on("click" , function(){
     	var animal = $(this).attr("data-animal");
+      console.log(animal);
     	var queryURL =  "http://api.giphy.com/v1/gifs/search?q=" +
         animal + "&api_key=dc6zaTOxFJmzC&limit=10";
 
@@ -28,7 +30,7 @@ function renderButtons() {
         })
         
         .done(function(response) {
-          console.log(queryURL);
+          console.log(response);
     });
 
 });
@@ -46,5 +48,5 @@ $("#add-animal").on("click", function(event) {
 });
 
 renderButtons();
-};
+
 

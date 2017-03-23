@@ -31,6 +31,7 @@ $(".animals").on("click", function() {
 
     .done(function(response) {
         console.log(response);
+        console.log(queryURL);
 
         var result = response.data;
 
@@ -46,7 +47,7 @@ $(".animals").on("click", function() {
             // animalImage.attr("data-animate" , );
             // animalImage.attr("data-state" , still);
 
-            animalImage.attr("")
+            
             animalDiv.append(p);
             animalDiv.append(animalImage);
             $("#gifs-appear-here").prepend(animalDiv);
@@ -57,9 +58,11 @@ $(".animals").on("click", function() {
                     if (state === "still") {
                         $(this).attr("src", $(this).attr(data - animate));
                         $(this).attr("data-state", "animate");
+
                     } else {
                         $(this).attr("src", $(this).attr("data-still"));
                         $(this).attr("data-state", "still");
+                        animalImage.attr("src", results[i].images.fixed_height_still.url);
                     }
                 
             });

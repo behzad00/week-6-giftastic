@@ -18,7 +18,7 @@ function renderButtons() {
     }
 }
 
-$(".animals").on("click", function() {
+$(document).on("click",".animals", function() {
     var animal = $(this).attr("data-animal");
     console.log(animal);
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
@@ -33,7 +33,7 @@ $(".animals").on("click", function() {
         console.log(response);
         console.log(queryURL);
 
-        var result = response.data;
+        var results = response.data;
 
         for (var i = 0; i < results.length; i++) {
 
@@ -50,9 +50,9 @@ $(".animals").on("click", function() {
             
             animalDiv.append(p);
             animalDiv.append(animalImage);
-            $("#gifs-appear-here").prepend(animalDiv);
+            $(".gifs-appear-here").prepend(animalDiv);
 
-            (".gif").on("click", function() {
+           $(".gif").on("click", function() {
 
                     var state = $(this).attr("data-state");
                     if (state === "still") {
